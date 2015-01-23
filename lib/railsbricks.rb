@@ -7,7 +7,6 @@ require_relative "railsbricks/config_helpers"
 
 class Railsbricks
 
-
   def self.main(args)
     # new app
     if args[0] == '-n' || args[0] == '--new'
@@ -24,10 +23,8 @@ class Railsbricks
       display_help
     end
     
-    
     # TODO: version & about
   end
-  
   
   def self.new_app
     menu = Menu.new
