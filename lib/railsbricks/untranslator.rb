@@ -13,6 +13,7 @@ class Untranslator
   # TODO work with temporary files
   def process_in_place file
     file_content = File.read file
+    # TODO also capture linkt_to t('...') style translations
     new_file_content = file_content.gsub(/<%= t\('([a-zA-Z0-9.-_]*)'\) %>/) do |match|
       translate Regexp.last_match[1]
     end
