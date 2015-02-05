@@ -1,1 +1,1 @@
-<h4><%= link_to "Posts", admin_posts_dashboard_path %> <small>- <%= "#{pluralize(@post_count, 'post')}" %></small></h4>
+<h4><%= link_to t('admin.posts'), admin_posts_dashboard_path %> <small>- <%= "#{pluralize(@post_count, 'post')}" %></small></h4>

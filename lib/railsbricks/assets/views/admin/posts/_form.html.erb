@@ -12,7 +12,7 @@
   <%= f.label :title %>
   <div class="row">
     <div class="col-xs-12">
-      <%= f.text_field :title, :autofocus => true, class: "form-control monospaced-control", placeholder: "Title (also used for URL slug)..." %>
+      <%= f.text_field :title, :autofocus => true, class: "form-control monospaced-control", placeholder: t('admin.post_form.title_placeholder') %>
     </div>
   </div>
 </div>
@@ -21,7 +21,7 @@
   <%= f.label :content_md, "Content" %>
   <div class="row">
     <div class="col-xs-12">
-      <%= f.text_area :content_md, rows: 15, class: "form-control monospaced-control", placeholder: "Post content (Markdown format)..." %>
+      <%= f.text_area :content_md, rows: 15, class: "form-control monospaced-control", placeholder: t('admin.post_form.content_placeholder') %>
     </div>
   </div>
 </div>
@@ -46,8 +46,8 @@
 <div class="row">
   <div class="col-xs-12 padded">
     <button class='btn btn-primary'>
-      <i class='fa fa-plus-square'></i> Publish
-    </button> - <%= link_to "Cancel", admin_posts_dashboard_path %>
+      <i class='fa fa-plus-square'></i> <%= t('admin.post_form.publish') %>
+    </button> - <%= link_to t('admin.post_form.cancel'), admin_posts_dashboard_path %>
   </div>
 </div>
 

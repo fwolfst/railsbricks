@@ -1,9 +1,9 @@
-<% title("Admin") %>
+<% title(t('titles.admin')) %>
 <h1>Admin <small>Home</small></h1>
 <div class="row">
   <div class="col-sm-4">
     <h3>Menu</h3>
-    <h4><%= link_to "Users", admin_users_path %> <small>- <%= "#{pluralize(@count, 'user')}" %></small></h4>
+    <h4><%= link_to t('admin.users'), admin_users_path %> <small>- <%= "#{pluralize(@count, 'user')}" %></small></h4>
     BRICK_POSTS_LINK
     <hr/>
   </div>
@@ -21,7 +21,7 @@
   </div>
 
   <div class="col-sm-4">
-    <h3>Last Sign Ins</h3>
+    <h3><%= t('admin.last_signins') %></h3>
     <ul class="list-unstyled">
       <% @last_signins.each do |user| %>
       <li class="list-padded-bottom">

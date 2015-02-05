@@ -19,5 +19,33 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# TODO: Exclude translations for unselected sections.
+
 en:
-  hello: "Hello world"
+  assembled_with: "Assembled with"
+  titles:
+    home_page: Home Page
+    admin: Admin
+    posts_dashboard: Posts Dashboard
+    contact: Contact
+  home:
+    home_page: Home Page
+  navigation:
+    home: Home
+    toggle: Toggle navigation
+  error:
+    not_found: The page you were looking for doesn't exist (404)
+  admin:
+    users: Users
+    last_signins: Last Sign Ins
+    last_signups: Last Sign Ups
+    never: never
+    posts: Posts
+    post_form:
+      title_placeholder: Title (also used for URL slug)...
+      content_placeholder: Post content (Markdown format)...
+      publish: Publish
+      cancel: Cancel
+  pages:
+    contact:
+      your_name: Your name
