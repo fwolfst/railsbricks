@@ -418,7 +418,26 @@ class Menu
         @options[:ui][:font] = "open"
     end
     new_line(2)
+
+    if hints
+      wputs "i18n (internationalization) settings prepare you application to present itself in multiple languages. ", :help
+      new_line
+    end
+    wputs "- Do you want to enable basic i18n?"
+    wputs "tip: expressed as hexadecimal such as #663399", :help
+    wputs "(default: #428BCA)"
+    choice = answer("Enable i18n?")
     
+    # i18n
+    if hints
+      wputs "I can create a local and a remote Git repository for you. If you choose to do so, I will also create a specific .gitignore file to make sure your secrets are not distributed with your code.", :help
+    end
+    new_line
+    wputs "- i18n a local Git repository?"
+    wputs "1. Yes (default)", :info
+    wputs "2. No", :info
+    answer() == "2" ? @options[:local_git] = false : @options[:local_git] = true
+    new_line(2)
     # PRODUCTION
     wputs "5. Your Production Settings"
     wputs "---------------------------"
