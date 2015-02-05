@@ -8,6 +8,7 @@ require_relative "style_builder"
 require_relative "auth_builder"
 require_relative "post_builder"
 require_relative "config_helpers"
+require_relative "untranslator"
 
 class AppGenerator
 
@@ -82,6 +83,9 @@ class AppGenerator
 
     # save config
     ConfigHelpers.create_config(@app_dir, @options)
+
+    # replace i18n strings
+    do_i18n
 
     # git
     set_git
@@ -319,6 +323,16 @@ class AppGenerator
 
   def new_line(lines=1)
     StringHelpers.new_line(lines)
+  end
+
+  def do_i18n
+    # Load en.yml file
+    require 'yaml'
+    translations = YAML::load(File.open(@rbricks_dir + '/foundation/config/locales/en.yml'))['en']
+    untranslator = Untranslator.new translations
+    Dir.glob("#{@app_dir}/**/views/**/*.erb").each do |file|
+      untranslator.process_in_place file
+    end
   end
 
 end
