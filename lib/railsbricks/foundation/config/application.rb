@@ -29,5 +29,9 @@ module BRICK_APP_NAME
     # autoload lib path
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3f34a9db89b71d1c8047006d25105d01d7ab021b
   end
 end

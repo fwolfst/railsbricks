@@ -2,12 +2,12 @@ module Version
 
   MAJOR = 3
   MINOR = 1
-  PATCH = 3
+  PATCH = 5
   PRE = nil
-  
+
   YEAR = "2015"
   MONTH = "01"
-  DAY = "04"
+  DAY = "26"
 
   def self.to_s
     [MAJOR, MINOR, PATCH, PRE].compact.join(".")
@@ -16,7 +16,7 @@ module Version
   def self.current
     to_s
   end
-  
+
   def self.current_date
     "#{YEAR}-#{MONTH}-#{DAY}"
   end
