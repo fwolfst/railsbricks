@@ -72,7 +72,18 @@ module GemfileBuilder
     # Unicorn
     if options[:production_settings][:unicorn]
       add_gem = "# Unicorn: http://unicorn.bogomips.org\ngroup :production do\n  gem 'unicorn'\nend"
-      FileHelpers.add_to_file(app_dir + "/Gemfile", add_gem)
+      add_to_gem_file add_gem
+    end
+
+    # I18n
+    if options[:i18n]
+      # TODO check if semver is used, force versions.
+      add_gem = "# Rails-i18n: https://github.com/svenfuchs/rails-i18n\ngem 'rails-i18n'\n"
+      add_to_gem_file add_gem
+      if options[:devise]
+        add_gem = "# devise-i18n: https://github.com/tigrish/devise-i18n\ngem 'devise-i18n'\n"
+        add_to_gem_file add_gem
+      end
     end
 
     # Set gem versions
