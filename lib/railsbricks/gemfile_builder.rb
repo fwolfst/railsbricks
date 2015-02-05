@@ -31,6 +31,7 @@ module GemfileBuilder
 
     rbricks_dir = File.dirname(__FILE__)
     add_gem = ""
+    @@gem_file_path = app_dir + "/Gemfile"
 
     # Copy base Gemfile
     FileUtils.cp_r(rbricks_dir + "/assets/gemfile/Gemfile", app_dir)
@@ -44,27 +45,27 @@ module GemfileBuilder
     else
       add_gem = "# PostgreSQL\ngem 'pg'"
     end
-    FileHelpers.add_to_file(app_dir + "/Gemfile", add_gem)
+    add_to_gem_file add_gem
 
     # Devise
     if options[:devise]
       add_gem = "# Devise: https://github.com/plataformatec/devise\ngem 'devise', 'BRICK_DEVISE_VERSION'"
-      FileHelpers.add_to_file(app_dir + "/Gemfile", add_gem)
+      add_to_gem_file add_gem
     end
 
     # Markdown (needed if Post resources)
     if options[:post_resources]
       add_gem = "# Redcarpet: https://github.com/vmg/redcarpet\ngem 'redcarpet', 'BRICK_REDCARPET_VERSION'"
-      FileHelpers.add_to_file(app_dir + "/Gemfile", add_gem)
+      add_to_gem_file add_gem
     end
 
     # Heroku
     if options[:production_settings][:target] == "heroku"
       add_gem = "# Rails 12factor for Heroku: https://github.com/heroku/rails_12factor\ngroup :production do\n  gem 'rails_12factor'\nend"
-      FileHelpers.add_to_file(app_dir + "/Gemfile", add_gem)
+      add_to_gem_file add_gem
       if options[:development_db] == "sqlite"
         add_gem = "# PostgreSQL gem for Heroku\ngroup :production do\n  gem 'pg'\nend"
-        FileHelpers.add_to_file(app_dir + "/Gemfile", add_gem)
+        add_to_gem_file add_gem
       end
     end
 
@@ -110,6 +111,10 @@ module GemfileBuilder
 
   def self.new_line(lines=1)
     StringHelpers.new_line(lines)
+  end
+
+  def self.add_to_gem_file line
+    FileHelpers.add_to_file(@@gem_file_path, line)
   end
 
 end
